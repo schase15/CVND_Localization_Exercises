@@ -14,8 +14,8 @@ class Color(object):
     def __init__(self, r, g, b):
         # Setting the r value
         self.r = r
-        
-        ## TODO: Set the other two color variables g and b
+        self.g = g
+        self.b = b
         
 
     # __repr__ is called when a color is printed using print(some_color)
@@ -28,8 +28,19 @@ class Color(object):
         ## TODO: Write a string representation for the color
         ## ex. "rgb = [self.r, self.g, self.b]"
         ## Right now this returns an empty string
-        string = ''
+        string = 'rgb = [self.r, self.g, self.b]'
         
         return string
     
+    ## Adds two colors together
+    def __add__(self, other):
+        '''Adds the r, g, and b components of each color together 
+           and averaging them. 
+           The new Color object, with these averaged rgb values, 
+           is returned.'''
+        new_r = (self.r + other.r) / 2
+        new_g = (self.g + other.g) / 2
+        new_b = (self.b + other.b) / 2
+
+        return Color(new_r, new_g, new_b)    
     

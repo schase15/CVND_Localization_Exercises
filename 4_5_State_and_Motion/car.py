@@ -16,7 +16,7 @@ class Car(object):
     
     # Car constructor 
     # Called when you write car.Car(_, _, _)
-    def __init__(self, position, velocity, world):
+    def __init__(self, position, velocity, world, color = 'r'):
         """Initializes Car with some position, velocity, and a world to traverse."""
         
         # Initialize the state
@@ -25,7 +25,7 @@ class Car(object):
         self.world = world # world is a 2D list of values that range from 0-1
         
         # Set the default color
-        self.color = 'r'
+        self.color = color
         
         # Initalize the path
         self.path = []
@@ -118,3 +118,14 @@ class Car(object):
         # Display final result
         plt.show()
 
+    def turn_right(self):
+        # Change the velocity
+        velocity = self.state[1]
+        
+        predicted_velocity = [
+            velocity[1],
+            -velocity[0]
+        ]
+        
+        # Update the state velocity
+        self.state[1] = predicted_velocity
